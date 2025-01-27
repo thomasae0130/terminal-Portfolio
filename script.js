@@ -1,57 +1,174 @@
+// Store command history and current position
+const commandHistory = [];
+let historyPosition = -1;
+
+// Get DOM elements
 const input = document.getElementById('input');
-const terminal = document.getElementById ('textarea');
+const terminal = document.getElementById('textarea');
 const span = document.getElementById('span');
+const sections = document.querySelectorAll('.section');
 
+// Initialize terminal with welcome message
+window.addEventListener('load', () => {
+    const welcomeMessage = `
+    Welcome to Thomas's Portfolio Terminal
+    Type 'help' to see available commands
+    ===============================
+    `;
+    terminal.value = welcomeMessage;
+});
 
+// Command object containing all available commands
 const commandObj = {
-    'help': () => { return `
-        Available commands:
-            - help: Displays avaible commands
-            - clear: Clears all commands from terminal window
-            - cd: Change current directory(home, about, works, contact, resume)
-            - ls: List all available files/ desctions in terminal
-            - ls works: Lists specific works/projects.
-            - ls about: LIsts skills/ tech used
-            - date: Show the current date/time
-            - echo ['your name']: for a personalized message
-            - exit: Exits the terminal
-            `
+    'help': () => {
+        return `
+Available commands:
+    - help: Displays available commands
+    - clear: Clears terminal window
+    - cd [directory]: Change directory (home, about, works, contact, resume)
+    - ls: List all available sections
+    - ls works: Lists specific works/projects
+    - ls about: Lists skills/technologies
+    - date: Show current date/time
+    - echo [text]: Display text in terminal
+    - exit: Exits the terminal
+    `;
     },
     'clear': () => {
-        terminal.innerHTML = '';
-        input.value = '';
+        terminal.value = '';
+        return '';
     },
-    'cd': (directory) =>{
-        switch(directory.toLowerCase()) {
-            case 'home':
-                span.innerHTML = "PS C:\Users\Thomas>"
-                    
-                break;
-            case 'about':
-                terminal.innerHTML += `${span.innerText} Current directory: about\n`;
-                break;
-            case 'works':
-                terminal.innerHTML += `${span.innerText} Current directory: works\n`;
-                break;
-            case 'contact':
-                terminal.innerHTML += `${span.innerText} Current directory: contact\n`;
-                break;
-            case'resume':
-                terminal.innerHTML += `${span.innerText} Current directory: resume\n`;
-                break;
-            default:
-                terminal.innerHTML += `${span.innerText} Error: Invalid directory. Use "cd" followed by "home", "about", "works", "contact", or "resume".\n`;
+    'ls': (args) => {
+        if (!args) {
+            return `
+Available sections:
+    home/
+    about/
+    works/
+    contact/
+    resume/
+            `;
         }
-    }}
+        
+        switch (args.toLowerCase()) {
+            case 'works':
+                return `
+Projects:
+    - Portfolio Terminal (JavaScript, HTML, CSS)
+    - [Add your other projects here]
+                `;
+            case 'about':
+                return `
+Skills & Technologies:
+    - Frontend: HTML, CSS, JavaScript
+    - [Add your other skills here]
+                `;
+            default:
+                return `Invalid argument. Try 'ls' without arguments or 'ls works/about'`;
+        }
+    },
+    'cd': (directory) => {
+        if (!directory) {
+            return "Error: Please specify a directory (home, about, works, contact, or resume)";
+        }
 
+        // Hide all sections first
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
 
+        const dir = directory.toLowerCase();
+        const validDirectories = ['home', 'about', 'works', 'contact', 'resume'];
+        
+        if (validDirectories.includes(dir)) {
+            span.innerHTML = `PS C:\\Users\\Thomas\\${directory.charAt(0).toUpperCase() + directory.slice(1)}>`;
+            const targetSection = document.getElementById(dir);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                return `Changed directory to ${directory}`;
+            }
+        }
+        
+        return `Error: Invalid directory. Use "cd" followed by "home", "about", "works", "contact", or "resume"`;
+    },
+    'date': () => {
+        return new Date().toLocaleString();
+    },
+    'echo': (text) => {
+        return text || '';
+    },
+    'exit': () => {
+        // You could implement custom exit behavior here
+        return 'Goodbye! Thanks for visiting.';
+        
+    }
+};
+
+// Process command and return appropriate response
+function processCommand(commandLine) {
+    const args = commandLine.trim().split(' ');
+    const command = args[0].toLowerCase();
+    const commandArgs = args.slice(1).join(' ');
+
+    if (command === '') {
+        return '';
+    }
+
+    const commandFunction = commandObj[command];
+    if (commandFunction) {
+        return commandFunction(commandArgs);
+    }
+
+    return `Command not found: ${command}. Type 'help' for available commands.`;
+}
+
+// Handle command history navigation
+function handleArrowKeys(event) {
+    if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        if (historyPosition < commandHistory.length - 1) {
+            historyPosition++;
+            input.value = commandHistory[commandHistory.length - 1 - historyPosition];
+        }
+    } else if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        if (historyPosition > 0) {
+            historyPosition--;
+            input.value = commandHistory[commandHistory.length - 1 - historyPosition];
+        } else if (historyPosition === 0) {
+            historyPosition = -1;
+            input.value = '';
+        }
+    }
+}
+
+// Main input event handler
 input.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
-        if (!input.value) {
-            terminal.innerHTML += `${span.innerText} Error: please enter an input into the command line. If you need help, use "help" within the command line.\n`;
-        }else if (input.value.toLowerCase() === 'clear') {
-        terminal.innerHTML = '';
-        input.value = ''
+        const commandLine = input.value;
+        const response = processCommand(commandLine);
+        
+        // Add command to terminal display
+        terminal.value += `${span.innerHTML} ${commandLine}\n`;
+        if (response) {
+            terminal.value += `${response}\n`;
+        }
+        
+        // Add command to history and reset position
+        if (commandLine.trim()) {
+            commandHistory.unshift(commandLine);
+        }
+        historyPosition = -1;
+        
+        // Clear input and scroll to bottom
+        input.value = '';
+        terminal.scrollTop = terminal.scrollHeight;
+    } else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+        handleArrowKeys(event);
     }
-    } 
+});
+
+// Ensure input maintains focus
+document.addEventListener('click', () => {
+    input.focus();
 });
