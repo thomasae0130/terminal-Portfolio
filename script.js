@@ -54,14 +54,14 @@ Available sections:
             case 'works':
                 return `
 Projects:
-    - Portfolio Terminal (JavaScript, HTML, CSS)
-    - [Add your other projects here]
+    - Portfolio Terminal (JavaScript, HTML, CSS, Python)
+    - [Add other projects here]
                 `;
             case 'about':
                 return `
 Skills & Technologies:
     - Frontend: HTML, CSS, JavaScript
-    - [Add your other skills here]
+    - data sorting: Python
                 `;
             default:
                 return `Invalid argument. Try 'ls' without arguments or 'ls works/about'`;
@@ -98,11 +98,14 @@ Skills & Technologies:
         return text || '';
     },
     'exit': () => {
-        // You could implement custom exit behavior here
-        return 'Goodbye! Thanks for visiting.';
+        setTimeout(() => {window.location.href =  'https://www.youtube.com/watch?v=Rmp6zIr5y4U&list=RDhVkBlsgthLg&index=2';
+         }, 3000);
+        return `Exiting terminal...`;}
         
+        
+
     }
-};
+
 
 // Process command and return appropriate response
 function processCommand(commandLine) {
@@ -117,7 +120,7 @@ function processCommand(commandLine) {
     const commandFunction = commandObj[command];
     if (commandFunction) {
         return commandFunction(commandArgs);
-    }
+    } 
 
     return `Command not found: ${command}. Type 'help' for available commands.`;
 }
