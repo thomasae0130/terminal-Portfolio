@@ -54,8 +54,15 @@ Available sections:
             case 'works':
                 return `
 Projects:
-    - Portfolio Terminal (JavaScript, HTML, CSS, Python)
-    - [Add other projects here]
+    - Hippo Clicker (javascript, HTML, CSS)
+    - Timer Clock (javascript, HTML, CSS)
+    - Joey Trap Baseline (javascript, HTML, CSS)
+    - Terminsl Portfolio (JavaScript, HTML, CSS)
+    - Password Generator (JavaScript, HTML, CSS)
+    - Roman Numeral Converter(JavaScript, HTML)
+    - Tribute Page (JavaScript, HTML, CSS)
+    - Data Generator/expense Tracker(Python)
+    - Hurricane Data (Python)
                 `;
             case 'about':
                 return `
@@ -179,7 +186,7 @@ document.addEventListener('click', () => {
 const generateProjectElements = () => {
     // List of items
     const projectArr = [
-        'Hipp Clicker', 
+        'Hippo Clicker', 
         'Timer-Clock', 
         'Joey Trap Baseline',
         'Terminal Portfolio',
@@ -214,6 +221,7 @@ const generateProjectElements = () => {
         const icon = document.createElement('i');
         icon.classList.add('fa', 'fa-folder');
         icon.style.color = '#FFD438';
+        icon.style.margin = 'none';
         
         // Add text content to the span
         const textNode = document.createTextNode(` ${projectArr[i]}`);
@@ -224,19 +232,42 @@ const generateProjectElements = () => {
         
         // Add a class to the span for styling
         span.classList.add('dynamic-span');
-
+        // create an anchor element
         const anchor = document.createElement('a');
+        // set anchor href to the corresponding link
         anchor.href = projectLinks[i];
+        // set it to pen a new page
         anchor.target = '_blank';
+        // no text underline
         anchor.style.textDecoration = 'none';
+        // change the color a slight translucent black
         anchor.style.color = '#000000e1';
+        //append span to anchor
         anchor.appendChild(span);
 
         
-        // Append the span to the projectGrid container
+        // Append the anchor to the projectGrid container
         projectGrid.appendChild(anchor);
     }
 };
 
 // Call the function
 generateProjectElements();
+
+const updateGridColumns = () => {
+    const projectGrid = document.getElementById('projectGrid');
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth <= 480) {
+        projectGrid.style.gridTemplateColumns = '1fr';
+    } else if (screenWidth <= 768) {
+        projectGrid.style.gridTemplateColumns = '1fr 1fr';
+    } else {
+        projectGrid.style.gridTemplateColumns = '1fr 1fr 1fr';
+    }
+};
+
+// Call on load and resize
+window.addEventListener('load', updateGridColumns);
+window.addEventListener('resize', updateGridColumns);
+
