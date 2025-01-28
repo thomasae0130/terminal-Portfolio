@@ -175,3 +175,68 @@ input.addEventListener('keyup', (event) => {
 document.addEventListener('click', () => {
     input.focus();
 });
+
+const generateProjectElements = () => {
+    // List of items
+    const projectArr = [
+        'Hipp Clicker', 
+        'Timer-Clock', 
+        'Joey Trap Baseline',
+        'Terminal Portfolio',
+        'Password Generator',
+        'Roman Numeral Converter',
+        'Tribute Page',
+        'Data Generator/Expense Tracker',
+        'Hurricane Data Python'
+    ];
+
+    const projectLinks = [
+        'https://github.com/thomasae0130/hippo-clicker',
+        'https://github.com/thomasae0130/timer-clock',
+        'https://github.com/thomasae0130/Joey-Trap',
+        'https://github.com/thomasae0130/terminal-Portfolio',
+        'https://github.com/thomasae0130/password-generator',
+        'https://github.com/thomasae0130/roman-numeral-converter',
+        'https://github.com/thomasae0130/tribute',
+        'https://github.com/thomasae0130/data-generator-expense-tracker',
+        'https://github.com/thomasae0130/hurricane-data-',
+    ]
+    
+    // Get the container element
+    const projectGrid = document.getElementById('projectGrid');
+    
+    // Loop through the project array
+    for (let i = 0; i < projectArr.length; i++) {
+        // Create a span element
+        const span = document.createElement('span');
+        
+        // Create the <i> element for the folder icon
+        const icon = document.createElement('i');
+        icon.classList.add('fa', 'fa-folder');
+        icon.style.color = '#FFD438';
+        
+        // Add text content to the span
+        const textNode = document.createTextNode(` ${projectArr[i]}`);
+        
+        // Append the icon and text to the span
+        span.appendChild(icon);
+        span.appendChild(textNode);
+        
+        // Add a class to the span for styling
+        span.classList.add('dynamic-span');
+
+        const anchor = document.createElement('a');
+        anchor.href = projectLinks[i];
+        anchor.target = '_blank';
+        anchor.style.textDecoration = 'none';
+        anchor.style.color = '#000000e1';
+        anchor.appendChild(span);
+
+        
+        // Append the span to the projectGrid container
+        projectGrid.appendChild(anchor);
+    }
+};
+
+// Call the function
+generateProjectElements();
