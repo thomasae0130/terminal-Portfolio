@@ -10,7 +10,7 @@ body, html {
     width: 100%
 }
 body {
-     background-image: url('desktop-Image.jpg');
+     background-image: url('resources/desktop-Image.avif');
      background-size: cover;
      background-position: center;
      image-rendering: -webkit-optimize-contrast;
