@@ -10,7 +10,7 @@
 <html lang="en">
 <body>
     <section id='directoryWindows'>
-        <div id="home" class="section" style="display:none;">
+        <div id="home" class="section" style="display:none; overflow-y:scroll;">
             <!-- Header Section Content -->
             <header class="directoryWindowTab">
                 <div class="tab">
@@ -26,6 +26,31 @@
                 </div>
             </header>
             <!-- Home section content -->
+            <div id="home-content">
+                <h1>Welcome to My Portfolio!</h1>
+                <p>
+                    Hi, I'm Thomas, a self-taught web developer and AI enthusiast. 
+                    Explore my projects, learn about my journey, and let's connect!
+                </p>
+                <h2>Featured Projects</h2>
+                <div class="featured-projects">
+                    <div class="project">
+                        <h3>Terminal Portfolio</h3>
+                        <p>A terminal-style portfolio to showcase my skills.</p>
+                        <a href="https://github.com/thomasae0130/terminal-Portfolio" target="_blank">View Project</a>
+                    </div>
+                    <div class="project">
+                        <h3>Joey Trap Website</h3>
+                        <p>A responsive website designed for artist Joey Trap.</p>
+                        <a href="https://github.com/thomasae0130/Joey-Trap" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <div class="quick-links">
+                    <button onclick="processCommand('cd works')">View My Projects</button>
+                    <button onclick="processCommand('cd contact')">Get in Touch</button>
+                </div>
+            </div>
+            
           </div>
           <div id="about" class="section" style="display:none;">
             <!-- Header Section Content -->
@@ -43,6 +68,15 @@
                 </div>
             </header>
             <!-- About section content -->
+             <p id="aboutP">
+                Hi there! I'm a self-taught web developer with a passion for building things that are both functional and impactful. I started my web development journey in January and have since immersed myself in HTML, CSS, JavaScript, and a variety of other tools and technologies. While I consider myself a quick learner, I thrive on exploring new challenges, especially when it comes to design, coding, and problem-solving.
+
+Aside from coding, I enjoy staying engaged with new technologies like AI, and I'm currently diving deeper into Python and Raspberry Pi to build innovative projects. When I'm not developing, I find time to learn about chemistry, mechanical work, and other hands-on skills that keep me grounded.
+
+I value creativity and simplicity, and my approach is always focused on building solutions that are not only efficient but also easy to understand. I'm excited to continue growing and evolving in this field, and I'm always looking for new opportunities to apply my skills.
+
+Feel free to connect with me — I’m always open to collaboration and new ideas!
+             </p>
           </div>
           <div id="works" class="section" style="display:none; overflow-y :scroll;">
             <!-- Header Section Content -->
@@ -93,7 +127,7 @@
                     </div>
             </div>
           </div>
-          <div id="resume" class="section" style="display:none;">
+          <div id="resume" class="section" style="display:none; overflow-y: scroll">
             <!-- Header Section Content -->
             <header class="directoryWindowTab">
                 <div class="tab">
@@ -108,8 +142,9 @@
                     <i class="fa-duotone fa-solid fa-x" style="color: #F20544; opacity: 0.8;" ></i>
                 </div>
             </header>
+            
             <!-- Resume section content -->
-            <div id="resume">
+            <div id="resumes">
                 <div class="resume-card">
                     <!-- Header -->
                     <div class="resume-header">
@@ -118,7 +153,7 @@
                         <div class="resume-contact">
                             <a href="mailto:thomasaevanchik@gmail.com">thomasaevanchik@gmail.com</a> | 
                             <a href="https://github.com/thomasae0130" target="_blank">GitHub</a> | 
-                            <a href="https://linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+                            <a href="https://www.linkedin.com/in/thomas-evanchik-041387247?trk=people-guest_people_search-card" target="_blank">LinkedIn</a>
                         </div>
                     </div>
             
