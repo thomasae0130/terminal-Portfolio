@@ -178,11 +178,6 @@ input.addEventListener('keyup', (event) => {
     }
 });
 
-// Ensure input maintains focus
-document.addEventListener('click', () => {
-    input.focus();
-});
-
 const generateProjectElements = () => {
     // List of items
     const projectArr = [
@@ -193,7 +188,7 @@ const generateProjectElements = () => {
         'Password Generator',
         'Roman Numeral Converter',
         'Tribute Page',
-        'Data Generator/Expense Tracker',
+        'Data Generator',
         'Hurricane Data Python'
     ];
 
@@ -262,6 +257,8 @@ const updateGridColumns = () => {
         projectGrid.style.gridTemplateColumns = '1fr';
     } else if (screenWidth <= 768) {
         projectGrid.style.gridTemplateColumns = '1fr 1fr';
+    }else if (window.screen.height <= 800) {
+        document.getElementById('directoryWindows').overflowY = 'scroll';
     } else {
         projectGrid.style.gridTemplateColumns = '1fr 1fr 1fr';
     }
@@ -270,4 +267,6 @@ const updateGridColumns = () => {
 // Call on load and resize
 window.addEventListener('load', updateGridColumns);
 window.addEventListener('resize', updateGridColumns);
+
+
 

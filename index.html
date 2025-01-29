@@ -11,12 +11,14 @@
 <body>
     <section id='directoryWindows'>
         <div id="home" class="section" style="display:none;">
+            <!-- Header Section Content -->
             <header class="directoryWindowTab">
                 <div class="tab">
                     <i class="fa-solid fa-folder" style="color: #FFD43B;"></i>
                     <p id="tabText">Home</p>
                     <i class="fa-duotone fa-solid fa-x" style="color: #F20544; opacity: 0.8; font-size: 10px; display:flex; justify-content: center; align-items: center;" ></i>
                 </div>
+                <!-- Header Icons -->
                 <div id="headerIcons">
                     <i class="fa-solid fa-minus" style="color: white; opacity: 0.8;"></i>
                     <i class="fa-regular fa-square" style="color: white; opacity: 0.8;" ></i>
@@ -24,19 +26,16 @@
                 </div>
             </header>
             <!-- Home section content -->
-             <section id="projectGrid">
-
-             </section>
-
           </div>
-          
           <div id="about" class="section" style="display:none;">
+            <!-- Header Section Content -->
             <header class="directoryWindowTab">
                 <div class="tab">
                     <i class="fa-solid fa-folder" style="color: #FFD43B;"></i>
                     <p id="tabText">About</p>
                     <i class="fa-duotone fa-solid fa-x" style="color: #F20544; opacity: 0.8; font-size: 10px; display:flex; justify-content: center; align-items: center;" ></i>
                 </div>
+                <!-- Header Icons -->
                 <div id="headerIcons">
                     <i class="fa-solid fa-minus" style="color: white; opacity: 0.8;"></i>
                     <i class="fa-regular fa-square" style="color: white; opacity: 0.8;" ></i>
@@ -45,14 +44,15 @@
             </header>
             <!-- About section content -->
           </div>
-          
-          <div id="works" class="section" style="display:none;">
+          <div id="works" class="section" style="display:none; overflow-y :scroll;">
+            <!-- Header Section Content -->
             <header class="directoryWindowTab">
                 <div class="tab">
                     <i class="fa-solid fa-folder" style="color: #FFD43B;"></i>
                     <p id="tabText">Works</p>
                     <i class="fa-duotone fa-solid fa-x" style="color: #F20544; opacity: 0.8; font-size: 10px; display:flex; justify-content: center; align-items: center;" ></i>
                 </div>
+                <!-- Header Icons -->
                 <div id="headerIcons">
                     <i class="fa-solid fa-minus" style="color: white; opacity: 0.8;"></i>
                     <i class="fa-regular fa-square" style="color: white; opacity: 0.8;" ></i>
@@ -60,9 +60,10 @@
                 </div>
             </header>
             <!-- Works section content -->
+            <section id="projectGrid"></section>
           </div>
           
-          <div id="contact" class="section" style="display:none;">
+          <div id="contact" class="section" style="display:none; overflow-y: scroll;">
             <header class="directoryWindowTab">
                 <div class="tab">
                     <i class="fa-solid fa-folder" style="color: #FFD43B;"></i>
@@ -76,15 +77,31 @@
                 </div>
             </header>
             <!-- Contact section content -->
+            <div id="contacts">
+                    <div class="contact-header">Get in Touch</div>
+                    <p class="contact-intro">Feel free to reach out to me for collaborations, questions, or opportunities!</p>
+                    <form class="contact-form">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                    <div class="contact-links">
+                        <a href="https://github.com/thomasae0130" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/thomas-evanchik-041387247?trk=people-guest_people_search-card" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="thomasaevanchik@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+            </div>
           </div>
-          
           <div id="resume" class="section" style="display:none;">
+            <!-- Header Section Content -->
             <header class="directoryWindowTab">
                 <div class="tab">
                     <i class="fa-solid fa-folder" style="color: #FFD43B;"></i>
                     <p id="tabText">Resume</p>
                     <i class="fa-duotone fa-solid fa-x" style="color: #F20544; opacity: 0.8; font-size: 10px; display:flex; justify-content: center; align-items: center;" ></i>
                 </div>
+                <!-- Header Icons -->
                 <div id="headerIcons">
                     <i class="fa-solid fa-minus" style="color: white; opacity: 0.8;"></i>
                     <i class="fa-regular fa-square" style="color: white; opacity: 0.8;" ></i>
@@ -92,8 +109,73 @@
                 </div>
             </header>
             <!-- Resume section content -->
-          </div>
-          
+            <div id="resume">
+                <div class="resume-card">
+                    <!-- Header -->
+                    <div class="resume-header">
+                        <h1>Thomas A.</h1>
+                        <p>Web Developer | AI Enthusiast</p>
+                        <div class="resume-contact">
+                            <a href="mailto:thomasaevanchik@gmail.com">thomasaevanchik@gmail.com</a> | 
+                            <a href="https://github.com/thomasae0130" target="_blank">GitHub</a> | 
+                            <a href="https://linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+                        </div>
+                    </div>
+            
+                    <!-- Summary -->
+                    <div class="resume-summary">
+                        <h2>Summary</h2>
+                        <p>Self-taught web developer with experience in building dynamic and responsive websites. Passionate about AI development and creating innovative solutions.</p>
+                    </div>
+            
+                    <!-- Skills -->
+                    <div class="resume-skills">
+                        <h2>Skills</h2>
+                        <ul>
+                            <li>Frontend: HTML, CSS, JavaScript</li>
+                            <li>Backend: Node.js</li>
+                            <li>AI/ML: Python</li>
+                            <li>Version Control: Git, GitHub</li>
+                            <li>Tools: Figma, Raspberry Pi</li>
+                        </ul>
+                    </div>
+            
+                    <!-- Experience -->
+                    <div class="resume-experience">
+                        <h2>Experience</h2>
+                        <div class="experience-item">
+                            <h3>Project: Terminal Portfolio</h3>
+                            <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+                            <ul>
+                                <li>Developed an interactive terminal-style portfolio site.</li>
+                                <li>Implemented custom command parsing for a unique user experience.</li>
+                            </ul>
+                        </div>
+                        <div class="experience-item">
+                            <h3>Project: Joey Trap Website</h3>
+                            <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+                            <ul>
+                                <li>Created a professional website for the artist Joey Trap.</li>
+                                <li>Focused on responsive design and usability.</li>
+                            </ul>
+                        </div>
+                    </div>
+            
+                    <!-- Education -->
+                    <div class="resume-education">
+                        <h2>Education</h2>
+                        <p>Self-taught Web Developer (January 2024 - Present)</p>
+                    </div>
+            
+                    <!-- Download Button -->
+                    <div class="resume-download">
+                        <button onclick="window.open('path-to-your-resume.pdf')">Download Resume</button>
+                    </div>
+                </div>
+            </div>
+            
+          </div>  
+
     </section>
     <main>
         <header>  
@@ -111,15 +193,12 @@
         </header>
         <section id="teminalWindow">
             <textarea id="textarea"   readonly>
-
             </textarea>
             <div id="prompt">
                 <span id="span">PS C:\Users\Thomas></span>
                 <input id="input" type="text" autocomplete="off">
             </div>
-            
         </section>
     </main>
-    
 </body>
 </html>
